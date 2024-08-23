@@ -38,8 +38,12 @@ def main():
         for obj in drawable:
             obj.draw(screen)
 
-        for obj in asteroids:
-            if obj.colided(player):
+        for asteroid in asteroids:
+            for shot in shots:
+                if shot.colided(asteroid):
+                    shot.kill()
+                    asteroid.split()
+            if asteroid.colided(player):
                 print("GAME OVER!")
                 return
 
